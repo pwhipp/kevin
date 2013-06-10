@@ -45,11 +45,11 @@ MANAGERS = ADMINS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'kevin',
+        'USER': 'kevin',
+        'PASSWORD': 'woy4leeC',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
