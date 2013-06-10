@@ -193,13 +193,11 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-    # Database migration helpers:
-    'south',
-)
+    'south',)
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-)
+    'step_game',)
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
