@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}kevin{% endblock title %}</title>
+    <title>{% block title %}kevin one step game{% endblock title %}</title>
     <meta name="description" content="Kevin one step game">
     <meta name="author" content="Paul Whipp">
 
@@ -17,11 +17,18 @@
     <![endif]-->
 
     <div style="text-align: center;" class="container">
-
-      <h1>{% block page_title %}Example Base Template{% endblock page_title %}</h1>
-
+      {% if messages %}
+      <ul class="messages">
+	{% for message in messages %}
+	<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	{% endfor %}
+      </ul>
+      {% endif %}
+      {% block above_content %}
+        <p>Above content stuff goes here</p>
+      {% endblock above_content %}
       {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
+        <p>Main content goes here</p>
       {% endblock content %}
 
     </div> <!-- /container -->

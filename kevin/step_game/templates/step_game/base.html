@@ -1,4 +1,13 @@
 {% extends "base.html" %}
-{% block page_title %}
-Kevin Bacon One Step Game
-{% endblock page_title %}
+{% block above_content %}
+<form class="form-inline" method="post">
+{% csrf_token %}
+{% for field in actor_search_form %}
+{{ field.label_tag }} {{ field }}
+{% endfor %}
+<input type="submit" value="Go" />
+</form>
+{% endblock above_content %}
+{% block content %}
+{{ block.super }}
+{% endblock content %}
