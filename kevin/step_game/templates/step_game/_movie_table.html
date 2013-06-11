@@ -1,0 +1,14 @@
+<table style="width: 80%; margin: auto;" class="table-striped table-bordered" id="movies">
+  <tr>
+    <th>No.</th>
+    <th>Title</th>
+    <th>Year</th>
+  </tr>
+  {% for movie in table_list %}
+            <tr>
+                <td>{{ movie.id }}</td>
+                <td>{{ movie.name }}</td>
+                <td>{{ movie.year }}</td>
+            </tr>
+  {% endfor %}
+</table>

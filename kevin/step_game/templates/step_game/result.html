@@ -1,41 +1,31 @@
 {% extends "step_game/base.html" %}
 
 {% block content %}
-<p>?? ?? and Kevin Bacon were together in:</p>
-<p>tbd</p>
-<p>All of ?? ??'s performances</p>
-{% if movie_list %}
-   <table style="width: 80%; margin: auto;" class="table-striped table-bordered" id="movies">
-     <tr>
-       <th>No.</th>
-       <th>Title</th>
-       <th>Year</th>
-     </tr>
-        {% for movie in movie_list %}
-            <tr>
-                <td>{{ movie.id }}</td>
-                <td>{{ movie.name }}</td>
-                <td>{{ movie.year }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-
-    {% if is_paginated %}
-        <div class="pagination">
-            <span class="page-links">
-                {% if page_obj.has_previous %}
-                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                {% endif %}
-                <span class="page-current">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                </span>
-                {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}">next</a>
-                {% endif %}
-            </span>
-        </div>
-    {% endif %}
+{% if shared_movie_list %}
+<h2>{{ actor.first_name }} {{ actor.last_name }} and Kevin Bacon were together in:</h2>
+{% include "step_game/_movie_table.html" with table_list=shared_movie_list %}
 {% else %}
-    <p>No movies found.</p>
+<p>{{ actor.first_name }} {{ actor.last_name }} and Kevin Bacon never appeared in a movie together.</p>
+{% endif %}
+<h2>All of {{ actor.first_name }} {{ actor.last_name }}'s performances:</h2>
+{% if movie_list %}
+{% include "step_game/_movie_table.html" with table_list=movie_list %}
+{% if is_paginated %}
+<div class="pagination">
+  <span class="page-links">
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+    {% endif %}
+    <span class="page-current">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    </span>
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">next</a>
+    {% endif %}
+  </span>
+</div>
+{% endif %}
+{% else %}
+<p>No movies found.</p>
 {% endif %}
 {% endblock content %}
